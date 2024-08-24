@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Vivin Joghee</h1>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/about">About</a> |
+            <a href="/resume">Resume</a> |
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+    <section>
+        <h2>Work Experience</h2>
+        {% for experience in experiences %}
+            <div class="resume-entry">
+                <h3>{{ experience.title }}</h3>
+                <p class="company">{{ experience.company }}</p>
+                <p class="date">{{ experience.start_date }} - {{ experience.end_date }}</p>
+                <p>{{ experience.description }}</p>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        {% for education in educations %}
+            <div class="resume-entry">
+                <h3>{{ education.degree }}</h3>
+                <p class="company">{{ education.institution }}</p>
+                <p class="date">{{ education.start_date }} - {{ education.end_date }}</p>
+                <p>{{ education.description }}</p>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Certifications</h2>
+        {% for certification in certifications %}
+            <div class="resume-entry">
+                <h3>{{ certification.name }}</h3>
+                <p class="company">{{ certification.issuing_organization }}</p>
+                <p class="date">{{ certification.issue_date }}</p>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill.name }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Awards</h2>
+        {% for award in awards %}
+            <div class="resume-entry">
+                <h3>{{ award.name }}</h3>
+                <p class="company">{{ award.organization }}</p>
+                <p class="year">{{ award.year }}</p>
+                <p>{{ award.description }}</p>
+            </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Resume Website</p>
+    </footer>
+</body>
+</html>
